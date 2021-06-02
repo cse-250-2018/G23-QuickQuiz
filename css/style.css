@@ -1,0 +1,142 @@
+
+body{
+	background-color:#f4f4f4;
+	color:#555555;
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:16px;
+	font-weight:normal;
+
+	line-height:1.6em;
+	margin:0;
+}
+
+a{
+	text-decoration: none;
+	color:#000;
+}
+
+a:hover{
+	color:red;
+}
+
+a:active{
+	color:green;
+}
+
+a:visited{
+	
+}
+
+h1{
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .7), 0px 2px 0 rgba(0, 0, 0, .5);
+    text-transform: uppercase;
+    text-align: center;
+    color: #666;
+    margin: 0 0 30px 0;
+    letter-spacing: 4px;
+    font: normal 26px/1 Verdana, Helvetica;
+    position: relative;
+}
+
+.bar {
+  height: .25em;
+  width: 100%;
+  background: black;
+  margin: 1.5em auto 0;
+}
+
+.container{
+	width:80%;
+	margin:auto;
+}
+
+.button{
+	background-color:#333;
+	color:#fff;
+	padding:10px 15px;
+	border:none;
+}
+
+.button:hover{
+	background:red;
+	color:#fff;
+}
+
+
+.box-1{
+	background-color:#333;
+	color:#fff;
+	padding: 8px;
+	
+	margin-top:20px;
+	margin:20px 0;
+}
+
+.box-1 h1{
+	font-family:Tahoma;
+	font-weight:800;
+	font-style:italic;
+	text-decoration:underline;
+	text-transform:uppercase;
+	letter-spacing: 0.2em;
+	word-spacing: 1em;
+}
+
+.box-2{
+	border:3px solid #ccc;
+	padding:20px;
+	width : 40%;
+	position : absulate;
+	top : 30%;
+	left : 25%;
+	margin: auto;
+}
+.box{
+	font-family:Tahoma;
+	font-weight:800;
+	font-style:Bold;
+	font-style:Italic;
+	letter-spacing: 0.2em;
+	word-spacing: 1em;
+	margin : 20%
+	padding : 20%;
+	background : black;
+	color: white;
+}
+
+.my-form{
+	padding:20px;
+}
+
+.my-form .form-group{
+	padding-bottom:15px;
+}
+
+.my-form label{
+	display:block;
+}
+
+.my-form input[type="text"], .my-form input[type="email"], .my-form input[type="password"]{
+	padding:8px;
+	width:100%;
+}
+
+.msg {
+	margin: 5px auto;
+	border-radius: 5px;
+	border: 1px solid red;
+	background: pink;
+	text-align: left;
+	color: brown;
+	padding: 10px;
+}
+.msg-2 {
+	margin: 5px auto;
+	border-radius: 5px;
+	border: 1px solid red;
+	background: green;
+	text-align: left;
+	color: black;
+	padding: 10px;
+}
