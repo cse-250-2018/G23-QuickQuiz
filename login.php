@@ -1,6 +1,5 @@
 <?php
 
-	session_start();
 	
 	$msg = "";
 	include 'functions.php';

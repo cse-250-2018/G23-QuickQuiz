@@ -74,7 +74,7 @@
         
         //insert data if there is no error    
 		$password = modifyPassword($password);//get hash
-        $sql = "INSERT INTO users (name, user_name, email, password) values ('$name','$username', '$email', '$password')";
+        $sql = "INSERT INTO users (name, username, email, password) values ('$name','$username', '$email', '$password')";
         $result = mysqli_query($con, $sql);
 
         if($result)
@@ -121,7 +121,7 @@
 		
 		//user will be login if there is no error
   
-        $sql = "SELECT * FROM users WHERE user_name = '$username' ";
+        $sql = "SELECT * FROM users WHERE username = '$username' ";
 		$result = mysqli_query($con, $sql);
 		
 		if(mysqli_num_rows($result) > 0)
@@ -175,10 +175,10 @@
 	//username exits?
 	function checkUserName($username, $con)
 	{
-		$sql = "SELECT * FROM users WHERE user_name = '$username' ";
-		$result = mysqli_query($con, $sql);
+		$sql = "SELECT * FROM users WHERE username = '$username' ";
+		$result = $con->query($sql);
 		
-		if(mysqli_num_rows($result) > 0)
+		if($result && mysqli_num_rows($result) > 0)
 			return true;
 		else
 			return false;
