@@ -331,5 +331,119 @@
 		return $text;
 	}
 	
+	function getNotes($con)
+    {
+        $_SESSION['rename_id']=0;
+        $username=$_SESSION['current_user'];
+        $sql = "SELECT * FROM notes WHERE Author = '$username' ORDER BY ID DESC";
+        $result = mysqli_query($con, $sql);
+ 
+                                    
+        $folder = "notes/".$_SESSION['current_user'];
+        if( is_dir($folder) === false )
+        {
+            mkdir($folder);
+        }
+                                    
+        while($row=mysqli_fetch_array($result))
+        {	
+            $idx=$_SESSION['rename_id'];
+            $_SESSION['rename_id']=$idx+1;
+            makeRow($row, $idx);
+        }
+        
+    }
+    
+    function makeRow($row, $idx)
+    {
+        $folder = "notes/".$_SESSION['current_user'];
+        
+        $name=$row['Name'];
+        $course=$row['Course'];
+        $type=$row['Type'];
+        $id=$row['ID'];
+        $time=$row['Time'];
+        $file=$folder."/".$name;
+        
+        $delLink="noteDelete.php?id=$id&which=$name";
+        $rename = " <form action='noteRename.php' method='get'>
+                    <input type='text' value='$name' id='renameID' name='rename' >
+                    <input type='hidden' value='$id' name='id' >
+                    <input type='submit' value='Rename' class='button2' >
+                    </form>
+                    ";
+                
+        echo "
+              <script>
+                var tr, td1,td2,td3,td4,td5,td6,td7,a1,a2,a3,btn1,btn2,btn3;
+                var td = new Array();
+                
+                tr = document.createElement('tr');
+                td[$idx] = document.createElement('td');
+                td[$idx].innerHTML ='$name';
+                td2 = document.createElement('td');
+                td2.innerHTML = '$course';
+                td3 = document.createElement('td');
+                td3.innerHTML = '$type';
+                td7 = document.createElement('td');
+                td7.innerHTML = '$time';
+                
+                td4 = document.createElement('td');
+                a1 = document.createElement('a');
+                a1.setAttribute('href','$file');
+                btn1 = document.createElement('button');
+                btn1.innerHTML = 'View';
+                btn1.classList.add('button2');
+                a1.appendChild(btn1);
+                td4.appendChild(a1);
+                
+                td5 = document.createElement('td');
+                a2 = document.createElement('a');
+                a2.setAttribute('href','$file');
+                a2.setAttribute('download','$name');
+                btn2 = document.createElement('button');
+                btn2.innerHTML = 'Download';
+                btn2.classList.add('button2');
+                a2.appendChild(btn2);
+                td5.appendChild(a2);
+                
+                td6 = document.createElement('td');
+                a3 = document.createElement('a');
+                a3.setAttribute('href','$delLink');
+                btn3 = document.createElement('button');
+                btn3.innerHTML = 'Delete';
+                btn3.classList.add('button2');
+                a3.appendChild(btn3);
+                td6.appendChild(a3);
+                
+                tr.appendChild(td[$idx]);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td7);
+                tr.appendChild(td4);
+                tr.appendChild(td5);
+                tr.appendChild(td6);
+                
+                document.getElementById('main').appendChild(tr);
+                
+                
+            </script>
+                
+        ";
+        
+        $action = "td[$idx].addEventListener('click', function(){
+                    alert('working $id!');
+                    td[$idx].innerHTML="."$rename"."
+                    alert('Kaj sesh,....$id!');
+                
+                });";
+                
+        
+        echo "<script>";
+        echo "$action";
+        echo "</script>";
+        
+
+    }
 
 ?>
