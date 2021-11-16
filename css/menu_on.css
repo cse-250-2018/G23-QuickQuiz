@@ -1,0 +1,7 @@
+@media (max-width: 730px) {
+    #nav_left{
+        min-height: 246.2px;
+        border-top: 1px solid #999;
+    }
+   
+}
