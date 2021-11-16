@@ -10,6 +10,7 @@
         <div ></div>
     </head>
     <body>
+        <?php include 'parts/nav_bar.php' ?>
         <div id="home">
             <div id="front_page">
                 <div id="front_left">
