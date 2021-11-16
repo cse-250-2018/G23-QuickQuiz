@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Raiden starts developing</title>
         <link rel="stylesheet" href="css/style.css">
-        <script src="scripts/run.js"></script>
         <div ></div>
     </head>
     <body>
