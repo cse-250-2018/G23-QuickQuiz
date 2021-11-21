@@ -5,7 +5,7 @@
     <div id="nav_left">
         <a href="index.php" class="menu_item">Home</a>
         <a href="#" class="menu_item">Quiz</a>
-        <a href="#" class="menu_item">Exam</a>
+        <a href="exam.php" class="menu_item">Exam</a>
         <a href="#" class="menu_item">Notes</a>
         <a href="#" class="menu_item">Forum</a>
     </div>
