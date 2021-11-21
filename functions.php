@@ -131,8 +131,8 @@
 			
 			$password=modifyPassword($password);//get hash
 			if($ori_pass == $password ){	
-				$user=$row['user_name'];
-				$_SESSION['user_name']=$user;
+				$user=$row['username'];
+				$_SESSION['current_user']=$user;
 				return "* Login successfull";
 			}
 			else
@@ -145,9 +145,9 @@
 	function getData($con)
 	{
 		$user="";
-		if(isset($_SESSION['user_name']))
+		if(isset($_SESSION['current_user']))
 		{
-			$user = $_SESSION['user_name'];
+			$user = $_SESSION['current_user'];
 		}
 		
 		$query = "select * from users where user_name = '$user' limit 1";
@@ -444,6 +444,19 @@
         echo "</script>";
         
 
+    }
+
+
+	//Prepares list item for list of exams
+	function get_exam_list_item($row){
+        return '<div class="exam_list_item">
+                        <div class="exam_name">
+                            <a href="exam_single.php?examid='.$row['id'].'">'.$row['name'].'</a>
+                        </div>
+                        <a class="exam_list_author" href="#">'.$row['author'].'</a>
+                        <p class="start_time">'.$row['startTime'].'</p>
+                        <p class="end_time">'.$row['endTime'].'</p>
+                </div>';
     }
 
 ?>
