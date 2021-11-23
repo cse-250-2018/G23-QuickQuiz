@@ -31,7 +31,7 @@
 </head>
 
 <body>
-
+	<?php include 'parts/nav_bar.php' ?>
 	<div class="box-2">
 	<h1>Create a new account</h1><div class="bar"></div>
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" class="my-form">
