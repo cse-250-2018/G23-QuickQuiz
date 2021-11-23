@@ -1,19 +1,20 @@
 <?php
     include 'connection.php';
     include 'functions.php';
-    if(!isset($_SESSION['user_name']))
+    if(!isset($_SESSION['current_user']))
     {
         header("location: login.php");
     }
 ?>
 <html>
     <head>
+        <link rel="stylesheet" href="css/notes.css">
     </head>
     <body>
-
+            <?php include 'parts/nav_bar.php' ?>
         
             <?php
-                $username=$_SESSION['user_name'];
+                $username=$_SESSION['current_user'];
                 $sql = "SELECT * FROM users WHERE username = '$username' ";
                 $result = mysqli_query($con, $sql);
                 $name="";
@@ -26,10 +27,9 @@
                 }
             ?>
         
-            <fieldset>
-                <legend><font size="11" color="green">
-                <b><i>Informations:</i></b></font></legend>
-                <table>
+                <font size="11" color="green">
+                <b><i>Informations:</i></b></font>
+                <table border="0">
                     <tr>
                         <td>Username:</td>
                         <td><?php echo $username; ?></td>
@@ -42,10 +42,7 @@
                         <td>Email:</td>
                         <td><?php echo $email; ?></td>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    
                     <tr>
                         <td colspan="2"><p> <a href="#">Edit Profile Info</a></p></td>
                     </tr>
@@ -54,7 +51,6 @@
                     </tr>
 
                 </table>
-            </fieldset>
 
             <h1>  My Notes: </h1>
 
