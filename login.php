@@ -39,7 +39,7 @@
 </head>
 
 <body>
-
+	<?php include 'parts/nav_bar.php' ?>
 	<div class="box-2">
 	<h1>Log in</h1><div class="bar"></div>
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" class="my-form">
