@@ -1,6 +1,4 @@
 <?php
-
-	session_start();
 	
 	$msg = "";
 	include 'functions.php';
@@ -31,7 +29,8 @@
 </head>
 
 <body>
-
+    
+    <br/>
 	<div class="box-2">
 	<h1>Reset Password</h1><div class="bar"></div>
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" class="my-form">
