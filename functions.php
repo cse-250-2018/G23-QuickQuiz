@@ -188,9 +188,9 @@
 	function alreadyLogin($con)
 	{
 
-		if(isset($_SESSION['user_name']))
+		if(isset($_SESSION['current_user']))
 		{
-			$username = $_SESSION['user_name'];
+			$username = $_SESSION['current_user'];
 			$query = "SELECT * FROM users where user_name = '$username' limit 1";
 
 			$result = mysqli_query($con,$query);
