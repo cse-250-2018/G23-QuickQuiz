@@ -1,11 +1,11 @@
 <?php
 
 
-	if(isset($_SESSION['user_name']))
+	if(isset($_SESSION['current_user']))
 	{
-		unset($_SESSION['user_name']);
+		unset($_SESSION['current_user']);
 	}
 
-	header("Location: login.php");
+	header("Location: index.php");
 	die;
 ?>
