@@ -14,7 +14,10 @@
     </head>
     <body>
         <?php include 'parts/nav_bar.php' ?>
-
+        <div id="center">
+            <div class="notes_home_container">
+                
+                
                 <div class="box-2">
                     <h1 id="heading">Upload File</h1>
                     <form method="POST" enctype="multipart/form-data" action="upload.php">
@@ -37,6 +40,7 @@
                                 <option value="CA"> Computer Architecture </option>
                                 <option value="AI"> Artificial Intelligence </option>
                                 <option value="ML"> Machine Learning </option>
+                                <option value="other"> Others </option>
                 
                             </select>
                         </div>
@@ -80,10 +84,10 @@
                      ?>
                         <table>
                                 <tr>
-                                    <th>Author</th>
-                                    <th>File Name</th>
-                                    <th>Course</th>
-                                    <th>Published</th>
+                                    <th><a href="noteSort.php?sort=Author&cnt=<?php echo $_SESSION['cntA']; ?>">Author</a></th>
+                                    <th><a href="noteSort.php?sort=Name&cnt=<?php echo $_SESSION['cntFN'];  ?>">File Name</a></th>
+                                    <th><a href="noteSort.php?sort=Course&cnt=<?php echo $_SESSION['cntC']; ?>">Course</a></th>
+                                    <th><a href="noteSort.php?sort=Time&cnt=<?php echo $_SESSION['cntT']; ?>">Published</a></th>
                                     <th>View</th>
                                     <th>Download</th>
                                 </tr>
@@ -113,6 +117,8 @@
                         ?>
 
                          </table>
+                    </div>
+        </div>
 
     </body>
 </html>
