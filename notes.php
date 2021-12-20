@@ -24,23 +24,23 @@
                         <div class="form-group">
                             <label>Course Name:</label>
                             <select name="course">
-                                <option value="SPL">Structured Programming Language</option>
-                                <option value="DM">Discrete Math</option>
-                                <option value="DS">Data Structures</option>
-                                <option value="ALGO">Algorithm Design & Analysis</option>
-                                <option value="OOP"> OOP </option>
-                                <option value="NA">Numerical Analysis </option>
-                                <option value="TOC">Theory of Computation</option>
-                                <option value="ECL"> Ethics & Cyber Law </option>
-                                <option value="DSP">Digital Signal Processing </option>
-                                <option value="DB"> Database System </option>
-                                <option value="OSS"> Operating System </option>
-                                <option value="CN"> Computer Networking </option>
-                                <option value="CG"> Computer Graphics </option>
-                                <option value="CA"> Computer Architecture </option>
-                                <option value="AI"> Artificial Intelligence </option>
-                                <option value="ML"> Machine Learning </option>
-                                <option value="other"> Others </option>
+                                <option value="Structured Programming Language">Structured Programming Language</option>
+                                <option value="Discrete Math">Discrete Math</option>
+                                <option value="Data Structures">Data Structures</option>
+                                <option value="Algorithm Design & Analysis">Algorithm Design & Analysis</option>
+                                <option value="Object Oriented Programming">Object Oriented Programming </option>
+                                <option value="Numerical Analysis">Numerical Analysis </option>
+                                <option value="Theory of Computation">Theory of Computation</option>
+                                <option value="Ethics & Cyber Law"> Ethics & Cyber Law </option>
+                                <option value="Digital Signal Processing">Digital Signal Processing </option>
+                                <option value="Database System"> Database System </option>
+                                <option value="Operating System"> Operating System </option>
+                                <option value="Computer Networking"> Computer Networking </option>
+                                <option value="Computer Graphics"> Computer Graphics </option>
+                                <option value="Computer Architecture"> Computer Architecture </option>
+                                <option value="Artificial Intelligence"> Artificial Intelligence </option>
+                                <option value="Machine Learning"> Machine Learning </option>
+                                <option value="Others"> Others </option>
                 
                             </select>
                         </div>
