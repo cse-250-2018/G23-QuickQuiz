@@ -353,6 +353,35 @@
         }
         
     }
+
+    //Storing Details of note
+    function uploadNote($FILES, $data, $con)
+	{
+		//get input data
+        $course       = $data['course'];
+        $type         = $data['type'];
+        $author       = $data['author'];
+        $file         = $FILES['file']['name'];
+        $size         = $FILES['file']['size'];
+        
+        $size = round($size / 1024 / 1024, 5); //in MB
+		
+
+        $sql = "INSERT INTO notes (Author, Course, Name, Type, Size) values ('$author','$course', '$file', '$type', '$size')";
+        $result = mysqli_query($con, $sql);
+
+        if($result)
+		{
+            return "* Stored successfully";
+        }
+		else
+		{
+            $s = $author." ".$course." ".$file." ".$type." ".$size." MB";
+            return $s;
+			//return "<div class='msg'>* Something error in data. Try again.</div>";
+		}
+
+	}
     
     function makeRow($row, $idx)
     {
