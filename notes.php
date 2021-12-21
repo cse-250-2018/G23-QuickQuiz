@@ -84,10 +84,50 @@
                      ?>
                         <table>
                                 <tr>
-                                    <th><a href="noteSort.php?sort=Author&cnt=<?php echo $_SESSION['cntA']; ?>">Author</a></th>
-                                    <th><a href="noteSort.php?sort=Name&cnt=<?php echo $_SESSION['cntFN'];  ?>">File Name</a></th>
-                                    <th><a href="noteSort.php?sort=Course&cnt=<?php echo $_SESSION['cntC']; ?>">Course</a></th>
-                                    <th><a href="noteSort.php?sort=Time&cnt=<?php echo $_SESSION['cntT']; ?>">Published</a></th>
+                                    <th>Author
+                                    <?php 
+                                        if(!isset($_SESSION['A_type']))
+                                            echo "<a href='noteSort.php?sort=Author&cnt=1'><img src='images/both.gif' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else if($_SESSION['A_type'] == "DESC")
+                                             echo "<a href='noteSort.php?sort=Author&cnt=1'><img src='images/downvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else
+                                            echo "<a href='noteSort.php?sort=Author&cnt=0'><img src='images/upvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                    ?>
+                                    </th>
+                                    
+                                    <th>File Name
+                                    <?php 
+                                        if(!isset($_SESSION['N_type']))
+                                            echo "<a href='noteSort.php?sort=Name&cnt=1'><img src='images/both.gif' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else if($_SESSION['N_type'] == "DESC")
+                                             echo "<a href='noteSort.php?sort=Name&cnt=1'><img src='images/downvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else
+                                            echo "<a href='noteSort.php?sort=Name&cnt=0'><img src='images/upvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                    ?>
+                                    </th>
+                                    
+                                    <th>Course
+                                    <?php 
+                                        if(!isset($_SESSION['C_type']))
+                                            echo "<a href='noteSort.php?sort=Course&cnt=1'><img src='images/both.gif' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else if($_SESSION['C_type'] == "DESC")
+                                             echo "<a href='noteSort.php?sort=Course&cnt=1'><img src='images/downvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else
+                                            echo "<a href='noteSort.php?sort=Course&cnt=0'><img src='images/upvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                    ?>
+                                    </th>
+                                    
+                                    <th>Published
+                                    <?php 
+                                        if(!isset($_SESSION['T_type']))
+                                            echo "<a href='noteSort.php?sort=Time&cnt=1'><img src='images/both.gif' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else if($_SESSION['T_type'] == "DESC")
+                                             echo "<a href='noteSort.php?sort=Time&cnt=1'><img src='images/downvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else
+                                            echo "<a href='noteSort.php?sort=Time&cnt=0'><img src='images/upvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                    ?>
+                                    </th>
+                                    
                                     <th>View</th>
                                     <th>Download</th>
                                 </tr>
