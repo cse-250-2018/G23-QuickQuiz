@@ -39,6 +39,14 @@
                 $type = 'DESC';
                 $_SESSION['cntA'] = '0';
             }
+            $_SESSION['A_type']=$type;
+            if(isset($_SESSION['N_type']))
+                unset($_SESSION['N_type']);
+            if(isset($_SESSION['T_type']))
+                unset($_SESSION['T_type']);
+            if(isset($_SESSION['C_type']))
+                unset($_SESSION['C_type']);
+            
         }
         else if($order == 'Name')
         {
@@ -52,6 +60,13 @@
                 $type = 'DESC';
                 $_SESSION['cntFN'] = '0';
             }
+            $_SESSION['N_type']=$type;
+            if(isset($_SESSION['A_type']))
+                unset($_SESSION['A_type']);
+            if(isset($_SESSION['T_type']))
+                unset($_SESSION['T_type']);
+            if(isset($_SESSION['C_type']))
+                unset($_SESSION['C_type']);
         }
         else if($order == 'Course')
         {
@@ -65,6 +80,13 @@
                 $type = 'DESC';
                 $_SESSION['cntC'] = '0';
             }
+            $_SESSION['C_type']=$type;
+            if(isset($_SESSION['A_type']))
+                unset($_SESSION['A_type']);
+            if(isset($_SESSION['N_type']))
+                unset($_SESSION['N_type']);
+            if(isset($_SESSION['T_type']))
+                unset($_SESSION['T_type']);
         }
         else if($order == 'Time')
         {
@@ -78,11 +100,19 @@
                 $type = 'DESC';
                 $_SESSION['cntT'] = '0';
             }
+            $_SESSION['T_type']=$type;
+            if(isset($_SESSION['A_type']))
+                unset($_SESSION['A_type']);
+            if(isset($_SESSION['N_type']))
+                unset($_SESSION['N_type']);
+            if(isset($_SESSION['C_type']))
+                unset($_SESSION['C_type']); 
         }
     }
 
     $sort = 'ORDER BY '.$order.' '.$type;
     $_SESSION['sort']=$sort;
+    $_SESSION['sort_type']=$type;
     
     echo $_SESSION['sort']."<br>";
     echo $_SESSION['cntA']."<br>";
