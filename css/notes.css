@@ -69,11 +69,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: green;
+    background-color: DodgerBlue;
     color:#fff;
     border-radius:4px;
     cursor:pointer;
+    font-family:cursive;
+    
 }
+#downloadButton:before {
+    background: url("../images/download.svg") no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
+    content: "";
+    display: inline-block;
+    height: 30px;
+    margin-right: 13px;
+    position: relative;
+    top: -2px;
+    vertical-align: middle;
+    width: 30px;
+}
+#downloadButton:after {
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
 .my-form{
 	padding:20px;
 }
@@ -162,3 +184,102 @@ td{
 /*td,tr:hover {
     background-color: rgba(255,255,255,0.3);
 }*/
+
+
+.download {
+    background: none repeat scroll 0 0 padding-box #518d2a;
+    border-radius: 10px;
+    color: #FFFFFF;
+    padding: 0.64286em 0.85714em 0.53571em;
+    position: relative;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    font-family: cursive;
+    
+}
+.download:visited {
+    color: #FFFFFF;
+}
+.download:hover, 
+.download:focus {
+    background: none repeat scroll 0 0 #37bd1f;
+    box-shadow: 0 6px 0 #3E6C20, 0 6px 3px rgba(0, 0, 0, 0.4);
+    color: #FFFFFF!important;
+}
+.download:active {
+    box-shadow: 0 0 0 #3E6C20, 0 0 0 rgba(0, 0, 0, 0.4);
+    top: 6px;
+}
+.download:active:after {
+    top: -6px;
+}
+.download:before {
+    background: url("../images/download.svg") no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
+    content: "";
+    display: inline-block;
+    height: 20px;
+    margin-right: 13px;
+    position: relative;
+    vertical-align: middle;
+    width: 30px;
+}
+.download:after {
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.view {
+    background: none repeat scroll 0 0 padding-box #6d4ccf;
+    border-radius: 10px;
+    color: #FFFFFF;
+    padding: 0.64286em 0.85714em 0.53571em;
+    position: relative;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    font-family: cursive;
+    
+}
+.view:visited {
+    color: #FFFFFF;
+}
+.view:hover, 
+.view:focus {
+    background: none repeat scroll 0 0 #599bdb;
+    box-shadow: 0 6px 0#553aa7, 0 6px 3px rgba(0, 0, 0, 0.4);
+    color: #FFFFFF!important;
+}
+.view:active {
+    box-shadow: 0 0 0 #4000ff, 0 0 0 rgba(0, 0, 0, 0.4);
+    top: 6px;
+}
+.view:active:after {
+    top: -6px;
+}
+.view:before {
+    background: url("../images/view.png") no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
+    content: "";
+    display: inline-block;
+    height: 20px;
+    margin-right: 13px;
+    position: relative;
+    vertical-align: middle;
+    width: 30px;
+    
+    top: 2px;
+}
+.view:after {
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
