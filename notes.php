@@ -23,7 +23,8 @@
                     <form method="POST" enctype="multipart/form-data" action="upload.php">
                         <div class="form-group">
                             <label>Course Name:</label>
-                            <select name="course">
+                            <select name="course"> 
+                                
                                 <option value="Structured Programming Language">Structured Programming Language</option>
                                 <option value="Discrete Math">Discrete Math</option>
                                 <option value="Data Structures">Data Structures</option>
@@ -43,7 +44,8 @@
                                 <option value="Others"> Others </option>
                 
                             </select>
-                        </div>
+                            </div>
+                        
                         
                         <div class="form-group">
                             <label>Type:</label>
@@ -147,9 +149,8 @@
                                   <td><?php echo $name ?></td>
                                   <td><?php echo $course ?></td>
                                   <td><?php echo $time ?></td>
-                                  <td><a href="<?php echo $file ?>"> <button id="button2">View</button> </a></td>
-                                  <td><a download="<?php echo $name ?>" href="<?php echo $file ?>" >  <button id="button2">Download</button> </a></td>
-                             </tr>
+                                  <td><a class="view" href="<?php echo $file ?>"> View </a></td>
+                                  <td><a class="download" download="<?php echo $name ?>" href="<?php echo $file ?>" > Download</a></td>
                         <?php
 
                             }
