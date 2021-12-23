@@ -10,7 +10,7 @@
     $exam_id=$con->insert_id;
     for($i=0;$i<count($exam->questions);$i++){
         $question=$exam->questions[$i];
-        $query='INSERT INTO questions (question, answer, exam) VALUES ("'.$question->statement.'","'.$question->answer.'","'.$exam_id.'")';
+        $query='INSERT INTO questions (question, answer, exam, course, difficulty, marks) VALUES ("'.$question->statement.'","'.$question->answer.'","'.$exam_id.'","'.$question->course.'","'.$question->difficulty.'","'.(int)$question->marks.'")';
         $con->query($query);
         $question_id=$con->insert_id;
         for($j=0;$j<count($question->options);$j++){
