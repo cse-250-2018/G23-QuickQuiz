@@ -228,7 +228,9 @@ function submit(){
     exam.startTime=inputs[1].value;
     exam.endTime=inputs[2].value;
     exam.name=name.value;
+    let selects=document.querySelectorAll("select");
     let idx=3;
+    let selId=0;
     for(let i=0;i<questions.length;i++){
         let statement=questions[i].querySelector(".question input");
         idx++;
@@ -245,10 +247,11 @@ function submit(){
         }
         question.marks=inputs[idx].value;
         idx++;
-        let selects=document.querySelectorAll("select");
-        question.course=selects[0].value;
-        question.difficulty=selects[1].value;
+        
+        question.course=selects[selId++].value;
+        question.difficulty=selects[selId++].value;
         exam.questions.push(question);
+        
     }
     
     alert(exam.questions.length);
