@@ -247,7 +247,7 @@ function submit(){
         idx++;
         let selects=document.querySelectorAll("select");
         question.course=selects[0].value;
-        question.difficulty=selects[0].value;
+        question.difficulty=selects[1].value;
         exam.questions.push(question);
     }
     
