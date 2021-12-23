@@ -24,7 +24,7 @@
                                 $start=strtotime($row["startTime"]);
                                 $end=strtotime($row["endTime"]);
                                 $cur=time();
-                                echo '<div id="exam_name" examid="'.$examid.'"><h2>'.$row["name"].'</h2></div>';
+                                echo '<div id="exam_name" examid="'.$examid.'"><div>Exam Title:</div><div>'.$row["name"].'</div></div>';
                                 if($cur<$start){
                                     echo '<div id="before_start">Before Start</div>';
                                     echo '<div id="countDown"></div>';
@@ -55,10 +55,10 @@
                                     }
                                     echo'</div>';
                                     echo'<div id="question_menu">';
+                                    echo '<div id="showResults"><a href="results.php?examid='.$examid.'">Results</a></div>';
                                         if(isset($_SESSION["current_user"]))
                                         echo '<div id="submitAnswer" onclick="answerSubmit()">Submit Answer</div>';
-                                        echo '<div id="showResults"><a href="results.php?examid='.$examid.'">Results</a></div>
-                                    </div>';
+                                        echo '</div>';
                                 }
                                 
                             }

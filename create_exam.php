@@ -19,7 +19,7 @@
     <body onload="getQuestion()">
         <?php include 'parts/nav_bar.php' ?>
         <div id="home">
-            <div id="exam_name"><input type="text" placeholder="Exam Title" required></div>
+            <div id="exam_name"><div>Exam Title:</div><input type="text" placeholder="Exam Title" required></div>
             <div id="input_time">
                 <div>Start:
                     <input type="datetime-local" required>
