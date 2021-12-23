@@ -68,7 +68,7 @@ function getQuestion(){
     inp.setAttribute("required","");
     cPanel.classList.add("option_control_panel");
     addOpt.setAttribute("src","images/add_option.svg");
-    undo.setAttribute("src","images/undo.svg");
+    undo.setAttribute("src","images/undo2.svg");
     qstn.appendChild(inp);
     cPanel.appendChild(addOpt);
     cPanel.appendChild(undo);
