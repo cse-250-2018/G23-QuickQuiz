@@ -6,6 +6,9 @@ class Question {
     this.statement="";
     this.options=[];
     this.answer=-1;
+    this.course="";
+    this.marks="";
+    this.difficulty="";
   }
 }
 //Option class
@@ -54,8 +57,44 @@ function markCorrect(optPrefix){
     
 }
 
+//get an option of <select>
+function addOption(val, txt){
+    let opt = document.createElement("option");
+    opt.value = val;
+    //opt.text = txt;
+    opt.appendChild( document.createTextNode(txt) );
+    
+    return opt;
+}
+
+//<select> for course list
+function courseList(){
+    let sel = document.createElement("select");
+    sel.add(addOption("Structured Programming Language", "Structured Programming Language"));
+    sel.add(addOption("Discrete Math", "Discrete Math"));
+    sel.add(addOption("Data Structures", "Data Structures"));
+    sel.add(addOption("Algorithm Design & Analysis", "Algorithm Design & Analysis"));
+    sel.add(addOption("Object Oriented Programming", "Object Oriented Programming"));
+    sel.add(addOption("Numerical Analysis", "Numerical Analysis"));
+    sel.add(addOption("Theory of Computation", "Theory of Computation"));
+    sel.add(addOption("Ethics & Cyber Law", "Ethics & Cyber Law"));
+    sel.add(addOption("Digital Signal Processing", "Digital Signal Processing"));
+    sel.add(addOption("Database System", "Database System"));
+    sel.add(addOption("Operating System", "Operating System"));
+    sel.add(addOption("Computer Networking", "Computer Networking"));
+    sel.add(addOption("Computer Graphics", "Computer Graphics"));
+    sel.add(addOption("Computer Architecture", "Computer Architecture"));
+    sel.add(addOption("Artificial Intelligence", "Artificial Intelligence"));
+    sel.add(addOption("Machine Learning", "Machine Learning"));
+    sel.add(addOption("Others", "Others"));
+    
+    return sel;
+}
+
 //Creates a question
 function getQuestion(){
+    
+    
     let qstn_container=document.createElement("div");
     let qstn=document.createElement("div");
     let inp=document.createElement("input");
@@ -72,8 +111,49 @@ function getQuestion(){
     qstn.appendChild(inp);
     cPanel.appendChild(addOpt);
     cPanel.appendChild(undo);
+    
+    let course=document.createElement("div");
+    let lvl_course=document.createElement("label");
+    let p=document.createElement("p");
+    p.innerHTML="<br>";
+    lvl_course.innerHTML="Course: ";
+    let sel = courseList();
+    course.appendChild(lvl_course);
+    course.appendChild(sel);
+    course.appendChild(p);
+    
+    let marks=document.createElement("div");
+    let lvl_marks=document.createElement("label");
+    let inp_marks=document.createElement("input");
+    let p2=document.createElement("p");
+    p2.innerHTML="<br>";
+    lvl_marks.innerHTML="Marks: ";
+    inp_marks.setAttribute("required","");
+    inp_marks.setAttribute("type", "number");
+    inp_marks.setAttribute("min", "1");
+    inp_marks.setAttribute("max", "10");
+    inp_marks.setAttribute("value", "1");
+    marks.appendChild(lvl_marks);
+    marks.appendChild(inp_marks);
+    marks.appendChild(p2);
+    
+    let difficulty=document.createElement("div");
+    let lvl_difficulty=document.createElement("label");
+    lvl_difficulty.innerHTML="Difficulty: ";
+    let sel2 = document.createElement("select");
+    sel2.add(addOption("easy", "Easy"));
+    sel2.add(addOption("medium", "Medium"));
+    sel2.add(addOption("hard", "Hard"));
+
+    difficulty.appendChild(lvl_difficulty);
+    difficulty.appendChild(sel2);
+    
     qstn_container.appendChild(qstn);
     qstn_container.appendChild(cPanel);
+    qstn_container.appendChild(course);
+    qstn_container.appendChild(marks);
+    qstn_container.appendChild(difficulty);
+    
     let c='A';
     qstn_container.insertBefore(genOption(c),cPanel);
     markCorrect(qstn_container.querySelector(".option_prefix"));
@@ -148,20 +228,29 @@ function submit(){
     exam.startTime=inputs[1].value;
     exam.endTime=inputs[2].value;
     exam.name=name.value;
+    let idx=3;
     for(let i=0;i<questions.length;i++){
         let statement=questions[i].querySelector(".question input");
+        idx++;
         let question=new Question();
         question.statement=statement.value;
         let options=questions[i].querySelectorAll(".option_container");
         for(let j=0;j<options.length;j++){
             let option=new Option();
             let opt=options[j].querySelector("input");
+            idx++;
             if(options[j].getAttribute("correct")=="1") question.answer=j;
             option.value=opt.value;
             question.options.push(option);
         }
+        question.marks=inputs[idx].value;
+        idx++;
+        let selects=document.querySelectorAll("select");
+        question.course=selects[0].value;
+        question.difficulty=selects[0].value;
         exam.questions.push(question);
     }
+    
     alert(exam.questions.length);
     examToServer(exam);
     
