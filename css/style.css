@@ -1,3 +1,16 @@
+:root {
+    --myblue: #39a0ed;
+    --mycyan: #1EC7CF;
+    --mydark: #4C6085;
+    --mygray: #dddddd;
+    --mygreen: #31C062;
+    --litecyan: #ebfeff;
+    --liteblue: #eef7ff;
+    --litedark: #a5afc2;
+  }
+
+
+
 *{
     margin: 0;
     font-family: sans-serif;
@@ -127,7 +140,6 @@ a{
     }
 }
 .card{
-    border: 2px solid white;
     cursor: pointer;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -135,7 +147,7 @@ a{
     flex-direction: column;
     width: 323.4px;
     height: 425.8px;
-    border: 2px solid white;
+    border: 2px solid var(--mygray);
 }
 .card img{
     margin-top: 42.7px;
@@ -155,16 +167,16 @@ a{
     padding: 5px;
 }
 #card_bottom_quiz{
-    background-color: #39A0ED;
+    background-color: var(--myblue);
 }
 
 #card_bottom_notes{
     text-decoration:none;
-    background-color: #4C6085;
+    background-color: var(--mydark);
 }
 #card_bottom_blog{
     text-decoration:none;
-    background-color: #31C062;
+    background-color: var(--mycyan);
 }
 #card_1{
     background-color: #ffffff0f;
