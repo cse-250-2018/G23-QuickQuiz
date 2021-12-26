@@ -135,6 +135,7 @@ select {
   padding: 0.5em 2em 0.5em 0.5em;
   border: 1px solid #d41ce0;
   font: inherit;
+  font-family:cursive;
   line-height: inherit;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -145,7 +146,16 @@ select {
   background-position: right 15px top 1em, right 10px top 1em;
   background-size: 5px 5px, 5px 5px;
 }
-
+option{
+    position:absolute;
+    top:100%;
+    right:0;
+    left:0;
+    margin:inherit 0;
+    padding:0 0;
+    background-color:#2229ae24;
+    font-family: cursive;
+}
 input[type="file"] {
     padding:8px;
     margin: 5px;
@@ -167,6 +177,7 @@ input[type="file"] {
   white-space: nowrap;
   cursor: pointer;
   font-size: 10pt;
+  font-family: cursive;
 }
 
 label{
