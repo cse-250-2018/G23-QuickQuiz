@@ -48,9 +48,9 @@ function answerToServer(exam){
 	req.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
             if(this.responseText!="true"){
-			     alert(this.responseText);
+			     //alert(this.responseText);
 			}
-            window.location.href = "results.php?examid="+exam.examid;
+            window.location.href = "quizSummary.php";
 	  	}
 	};
 	req.open("POST", url, false);
@@ -66,7 +66,7 @@ function answerSubmit(){
         let question=new Question();
         let options=questions[i].querySelectorAll(".option_container");
         question.id=(questions[i].querySelector(".question")).getAttribute("id");
-        alert(question.id);
+        //alert(question.id);
         for(let j=0;j<options.length;j++){
             let option=new Option();
             if(options[j].getAttribute("correct")=="1") question.answer=j;
