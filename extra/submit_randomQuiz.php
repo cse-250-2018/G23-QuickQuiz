@@ -11,6 +11,7 @@
     $correct=0;
     $attempt=0;
     $score=0;
+    $total_marks=0;
     for($i=0; $i<$total; $i++)
     {
         $id=$exam->questions[$i]->id;
@@ -28,6 +29,7 @@
                 $score+=$row['marks'];
             }
             
+            $total_marks+=$row['marks'];
             
             $html.= '<div class="question_container">';
             $html.= '<div class="qid">';
@@ -62,11 +64,12 @@
             $html.='</div>';
         }
     }
-
+    
+    $result=$score.'/'.$total_marks;
     //store in session
     $_SESSION['total']=$total;
     $_SESSION['correct']=$correct;
-    $_SESSION['score']=$score;
+    $_SESSION['score']=$result;
     $_SESSION['attempt']=$attempt;
     $_SESSION['your_ans']=$html;
 
