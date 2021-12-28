@@ -76,7 +76,9 @@
 		$password = modifyPassword($password);//get hash
         $sql = "INSERT INTO users (name, username, email, password) values ('$name','$username', '$email', '$password')";
         $result = mysqli_query($con, $sql);
-
+        $org='profile/system/dummy.jpg';
+        $nw='profile/'.$username.'.jpg';
+        copy($org,$nw);
         if($result)
 		{
             return "* Your account is created successfully";
@@ -475,7 +477,30 @@
 
     }
 
+	function timeSince ($time)
+    {
+        date_default_timezone_set("Asia/Dhaka");
+//        return $time;
+        $time=strtotime($time);
+        $time = strtotime(date('Y-m-d H:i:s'))-$time; // to get the time since that moment
+        $tokens = array (
+            31536000 => 'year',
+            2592000 => 'month',
+            604800 => 'week',
+            86400 => 'day',
+            3600 => 'hour',
+            60 => 'minute',
+            1 => 'second'
+        );
+        foreach ($tokens as $unit => $text) {
+            
+            if ($time < $unit) continue;
+            $numberOfUnits = floor($time / $unit);
+            return $numberOfUnits.' '.$text.(($numberOfUnits>1)?'s':'');
+        }
+        return "a few moments";
 
+    }
 	//Prepares list item for list of exams
 	function get_exam_list_item($row){
         return '<div class="exam_list_item">
@@ -487,5 +512,112 @@
                         <p class="end_time">'.$row['endTime'].'</p>
                 </div>';
     }
+
+
+	// Prepares list item for forum
+	function get_forum_list_item($row,$cnt){
+        $blog=$row['content'];
+		
+        return '<div class="blog_list_item">
+                        <div class="blog_list_prefix">
+                            <img src="images/upvote.svg">
+                            <label>+5</label>
+                            <img src="images/downvote.svg">
+                        </div>
+                        <div class="blog_list_suffix">
+                            <a href="blog_single.php?blogid='.$row['id'].'" class="blog_title">'.$row['title'].'</a>
+                            <div class="blog_preview">
+                                '.$blog.'
+                            </div>
+                            
+                            <div class="blog_list_bottom">
+                                <div class="bottom_prefix">
+                                    <img src="profile/'.$row['author'].'.jpg">
+                                    <p>posted by <a href="#">'.$row['author'].'</a> '.timeSince($row['time']).' ago</p>
+                                </div>
+                                <div class="bottom_suffix">
+                                    <div class="comments">
+                                        <img src="images/comments.svg"> '.$cnt.' comments
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>';
+    }
+    //Writes a blog into database
+    function writeBlog($data,$con){
+        if(!isset($_SESSION['current_user'])) return ;
+        $title=$data['title'];
+        $blog=$data['blog'];
+        $author=$_SESSION['current_user'];
+        $sql = "INSERT INTO posts (title, author,content) values ('$title','$author','$blog')";
+        $result = mysqli_query($con, $sql);
+    }
+    //Writes comment into database
+    function writeComment($get,$post, $con){
+        if(!isset($_SESSION['current_user'])) return ;
+        $user=$_SESSION['current_user'];
+        $par=$get['blogid'];
+        $comment = mysqli_real_escape_string($con,$_POST['comment']);
+        $sql="INSERT INTO comments (lvl,par,user,content) values ('0','$par','$user','$comment')";
+        mysqli_query($con, $sql);
+        
+    }
+    //Writes reply into database
+    function writeReply($post, $con){
+        if(!isset($_SESSION['current_user'])) return ;
+        $user=$_SESSION['current_user'];
+        $par=$post['replyto'];
+        $comment = mysqli_real_escape_string($con,$_POST['comment']);
+        $sql="INSERT INTO comments (lvl,par,user,content) values ('1','$par','$user','$comment')";
+        mysqli_query($con, $sql);
+    }
+    //Dfs and print replays
+    function dfsReplies($n,$con){
+        $query = "SELECT * FROM comments WHERE lvl != '0' AND par = '$n'";
+        $result = mysqli_query($con,$query);
+        if ($result){
+        if(mysqli_num_rows ( $result )==0) return "";
+        echo '<span>&#8596;</span>';
+        echo '<div class="replies_container">';
+            while($row = mysqli_fetch_array($result))
+            {
+                $cmnt=$row['content'];
+                echo '<div class="comment_container">';
+                    echo '<div class="comment_total">';
+                        echo'<div class="comment_prefix">';
+                            echo '<div class="comment_author">';
+                                echo '<div>';
+                                    echo '<img src="images/profile/'.$row['user'].'.jpg">';
+                                    echo '<a href="#">'.$row['user'].'</a>
+                                </div>';
+                            echo '</div>';
+                        echo '</div>';
+                        echo '<div class="comment_suffix">
+                                <p class="comment_time">'.timeSince($row['time']).' ago</p>
+                                '.$cmnt.'
+                                <div class="reply_btn_container"><div class="comment_replay_btn" onclick="showReplyField(this,'.$row['id'].');">&#8594;Reply</div></div>
+                                <div class="reply_form_container">
+                                    <form method="post" onsubmit="return calibrateTextArea()">
+                                        <textarea name="reply" class="ckTextArea"></textarea>
+                                        <input name="replyto" type="text">
+                                        <div id="reply_btns_container"><button type="submit" name="reply_submit">Post</button><button onclick="hideReplyField(this)" type="button">Cancel</button></div>
+                                    </form>
+                                </div>
+                            </div>';
+                    echo '</div>';
+
+                    echo '<div class="replies">';
+                            echo dfsReplies($row['id'],$con);
+                    echo '</div>';
+                    echo '</div>';
+                    
+                
+            }
+            echo '</div>';
+        }
+    }
+
 
 ?>
