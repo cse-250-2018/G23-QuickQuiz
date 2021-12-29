@@ -569,7 +569,7 @@
         if(!isset($_SESSION['current_user'])) return ;
         $user=$_SESSION['current_user'];
         $par=$post['replyto'];
-        $comment = mysqli_real_escape_string($con,$_POST['comment']);
+        $comment = mysqli_real_escape_string($con,$_POST['reply']);
         $sql="INSERT INTO comments (lvl,par,user,content) values ('1','$par','$user','$comment')";
         mysqli_query($con, $sql);
     }
@@ -583,13 +583,14 @@
         echo '<div class="replies_container">';
             while($row = mysqli_fetch_array($result))
             {
+                
                 $cmnt=$row['content'];
                 echo '<div class="comment_container">';
                     echo '<div class="comment_total">';
                         echo'<div class="comment_prefix">';
                             echo '<div class="comment_author">';
                                 echo '<div>';
-                                    echo '<img src="images/profile/'.$row['user'].'.jpg">';
+                                    echo '<img src="profile/'.$row['user'].'.jpg">';
                                     echo '<a href="#">'.$row['user'].'</a>
                                 </div>';
                             echo '</div>';
@@ -599,11 +600,11 @@
                                 '.$cmnt.'
                                 <div class="reply_btn_container"><div class="comment_replay_btn" onclick="showReplyField(this,'.$row['id'].');">&#8594;Reply</div></div>
                                 <div class="reply_form_container">
-                                    <form method="post" onsubmit="return calibrateTextArea()">
-                                        <textarea name="reply" class="ckTextArea"></textarea>
-                                        <input name="replyto" type="text">
-                                        <div id="reply_btns_container"><button type="submit" name="reply_submit">Post</button><button onclick="hideReplyField(this)" type="button">Cancel</button></div>
-                                    </form>
+                                <form method="post">
+                                    <textarea name="reply" class="editor"></textarea>
+                                    <input class="reply_hidden" name="replyto" type="text">
+                                    <div id="reply_btns_container"><button type="submit" name="reply_submit">Post</button><button onclick="hideReplyField(this)" type="button">Cancel</button></div>
+                                </form>
                                 </div>
                             </div>';
                     echo '</div>';

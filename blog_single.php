@@ -121,9 +121,9 @@
                                                         '.$cmnt.'
                                                         <div class="reply_btn_container"><div class="comment_replay_btn" onclick="showReplyField(this,'.$row['id'].');">&#8594;Reply</div></div>
                                                         <div class="reply_form_container">
-                                                            <form method="post" onsubmit="return calibrateTextArea()">
+                                                            <form method="post">
                                                                 <textarea name="reply" class="editor"></textarea>
-                                                                <input name="replyto" type="text">
+                                                                <input class="reply_hidden" name="replyto" type="text">
                                                                 <div id="reply_btns_container"><button type="submit" name="reply_submit">Post</button><button onclick="hideReplyField(this)" type="button">Cancel</button></div>
                                                             </form>
                                                         </div>
