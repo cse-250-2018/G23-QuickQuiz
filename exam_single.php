@@ -39,7 +39,7 @@
                                     while($question = mysqli_fetch_array($questions))
                                     {
                                         echo '<div class="question_container">';
-                                            echo '<div class="question">'.$question["question"].'</div>';
+                                            echo '<div class="question" id="'.$question["id"].'">'.$question["question"].'</div>';
                                             $query="SELECT * FROM `options` WHERE question = ".$question["id"];
                                             $options=$con->query($query);
                                             $a='A';
