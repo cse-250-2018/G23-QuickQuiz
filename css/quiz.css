@@ -192,6 +192,19 @@
     border-radius:4px;
     cursor:pointer;
 }
+#add_question_db{
+    margin-left: 100px;
+    margin-right: 100px;
+    width: 200px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #52986c;
+    color:#fff;
+    border-radius:4px;
+    cursor:pointer;
+}
 #done{
     margin-left: 100px;
     margin-right: 100px;
@@ -232,6 +245,9 @@
 
 .quiz_list_author{
     min-width: 180px;
+    width: 50%;
+    text-align: center;
+    font-family: cursive;
 }
 .start_time,.end_time{
     width: 180px;
@@ -241,6 +257,8 @@
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    width: 50%;
+    
 }
 .quiz_name a{
     color: #3d5af1;
