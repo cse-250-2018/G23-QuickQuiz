@@ -65,15 +65,34 @@
         }
     }
     
+    //$html='<details><summary>See Details</summary>'.$html.'</details>';
+    
     $result=$score.'/'.$total_marks;
-    //store in session
-    $_SESSION['total']=$total;
-    $_SESSION['correct']=$correct;
-    $_SESSION['score']=$result;
-    $_SESSION['attempt']=$attempt;
-    $_SESSION['your_ans']=$html;
+
+    $html='<table>
+                <tr> <th colspan="2">Result Summary</th> </tr>
+                <tr>
+                    <td align="center">Total Question</td>
+                    <td align="center">'.$total.'</td>
+                </tr>
+                <tr>
+                    <td align="center">Attempt</td>
+                    <td align="center">'.$attempt.'</td>
+                </tr>
+                <tr>
+                    <td align="center">Correct</td>
+                    <td align="center">'.$correct.'</td>
+                </tr>
+                <tr>
+                    <td align="center">Score</td>
+                    <td align="center">'.$result.'</td>
+                </tr>
+            </table>'.$html;
+    
+    $_SESSION['your_result']=$html;
 
 
     echo "true";
+    echo $exam->timeTaken;
 
 ?>
