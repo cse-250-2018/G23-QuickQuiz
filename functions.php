@@ -512,7 +512,15 @@
                         <p class="end_time">'.$row['endTime'].'</p>
                 </div>';
     }
-
+	//Prepares list item for list of quizs
+	function get_quiz_list_item($row){
+        return '<div class="quiz_list_item">
+                        <div class="quiz_name">
+                            <a href="quiz_single.php?quizid='.$row['id'].'">'.$row['name'].'</a>
+                        </div>
+                        <a class="quiz_list_author" href="#">'.$row['author'].'</a>
+                </div>';
+    }
 
 	// Prepares list item for forum
 	function get_forum_list_item($row,$cnt){
