@@ -9,6 +9,7 @@ class Question {
     this.course="";
     this.marks="";
     this.difficulty="";
+    this.id=-1;
   }
 }
 //Option class
@@ -204,7 +205,8 @@ function answerToServer(exam){
             if(this.responseText!="true"){
 			     alert(this.responseText);
 			}
-            window.location.href = "results.php?examid="+exam.examid;
+            //window.location.href = "results.php?examid="+exam.examid;
+            window.location.href = "summary.php";
 	  	}
 	};
 	req.open("POST", url, false);
@@ -266,6 +268,7 @@ function answerSubmit(){
         let statement=questions[i].querySelector(".question input");
         let question=new Question();
         let options=questions[i].querySelectorAll(".option_container");
+        question.id=(questions[i].querySelector(".question")).getAttribute("id");
         for(let j=0;j<options.length;j++){
             let option=new Option();
             if(options[j].getAttribute("correct")=="1") question.answer=j;
