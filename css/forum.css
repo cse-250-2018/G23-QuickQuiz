@@ -322,9 +322,7 @@ form{
 .reply_form_container > form > input{
     display: none;
 }
-.comment_container{
-    
-}
+
 #blog_single_vote_bar{
     padding:3px;
     border-radius: 5px;

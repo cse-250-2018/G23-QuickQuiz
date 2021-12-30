@@ -4,7 +4,10 @@
 	$msg = "";
 	include 'functions.php';
 	include 'connection.php';
-	
+	if(isset($_SESSION['current_user'])){
+        header("location: home.php");
+        die;
+    }
 	if(isset($_SESSION['msg']))
 	{
 		$msg=$_SESSION['msg'];
