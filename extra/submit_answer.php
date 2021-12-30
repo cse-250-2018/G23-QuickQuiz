@@ -1,11 +1,18 @@
 <?php 
 	include '../connection.php';
+    include '../functions.php';
     if(!isset($_POST['jsonExam'])||!isset($_SESSION['current_user'])){
         echo "Probably not logged in";
         die;
     }
 	$exam=json_decode($_POST['jsonExam']);
     $exam_id=$exam->examid;
+
+    $query="SELECT * FROM `results` WHERE exam = ".$exam_id." AND user = '".$_SESSION["current_user"]."'";
+    $result_final = $con->query($query);
+    $new_test=0;
+    if(!($result_final && mysqli_num_rows ( $result_final )>0))
+        $new_test=1;
         
     $html="";
     $total=count($exam->questions);
@@ -28,7 +35,11 @@
             if($row['answer'] == $ans){
                 $correct++;
                 $score+=$row['marks'];
+                if($new_test == 1)
+                    addToLeaderboard($_SESSION['current_user'], $row['course'], $row['marks'], $row['marks'], $con);
             }
+            else if($new_test == 1)
+                addToLeaderboard($_SESSION['current_user'], $row['course'], 0, $row['marks'], $con);
             
             $total_marks+=$row['marks'];
             
@@ -90,9 +101,8 @@
     
     $_SESSION['your_result']=$html;
 
-    $query="SELECT * FROM `results` WHERE exam = ".$exam_id." AND user = '".$_SESSION["current_user"]."'";
-    $result = $con->query($query);
-    if(!($result && mysqli_num_rows ( $result )>0))
+    
+    if(!($result_final && mysqli_num_rows ( $result_final )>0))
     {
         $query='INSERT INTO results (exam, user, score) VALUES ("'.$exam_id.'","'.$_SESSION["current_user"].'","'.$score.'")';
         $con->query($query);
