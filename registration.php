@@ -20,7 +20,7 @@
 		{
 			$msg="<div class='msg-2'>Your account is created successfully.</div>";
             $_SESSION['current_user']=$_POST['username'];
-			header("location: home.php");
+			header("location: index.php");
 		}
 		
 	}
