@@ -9,7 +9,7 @@
 	$_SESSION['f_email']="";
 	$_SESSION['f_reg']="";
 	if(isset($_SESSION['current_user'])){
-        header("location: home.php");
+        header("location: index.php");
         die;
     }
 	//check for reg
