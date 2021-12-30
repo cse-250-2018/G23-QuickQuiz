@@ -1,5 +1,6 @@
  <?php 
 	include '../connection.php';
+	include '../functions.php';
     if(!isset($_POST['jsonExam'])||!isset($_SESSION['current_user'])){
         echo "Probably not logged in";
         die;
@@ -27,6 +28,11 @@
             if($row['answer'] == $ans){
                 $correct++;
                 $score+=$row['marks'];
+                addToLeaderboard($_SESSION['current_user'], $row['course'], $row['marks'], $row['marks'], $con);
+            }
+            else
+            {
+                addToLeaderboard($_SESSION['current_user'], $row['course'], 0, $row['marks'], $con);
             }
             
             $total_marks+=$row['marks'];
@@ -93,6 +99,5 @@
 
 
     echo "true";
-    echo $exam->timeTaken;
 
 ?>
