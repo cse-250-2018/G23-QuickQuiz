@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/forum.css">
         <script src="scripts/vanila.js"></script>
+        <script src="scripts/forum.js"></script>
         <div ></div>
     </head>
     <body>
@@ -20,8 +21,8 @@
                     <div id="forum_menu">
                         <a href="#" class="forum_nav_btn selected_forum_nav_btn">Forum Home</a>
                         <a href="#" class="forum_nav_btn">My blogs</a>
-                        <a href="#" class="forum_nav_btn">My groups</a>
-                        <a href="#" class="forum_nav_btn">Groups</a>
+                        <a href="#" class="forum_nav_btn">Favourites</a>
+                        <a href="#" class="forum_nav_btn">Top blogs</a>
                     </div>
                     <div id="top_users">
                         Top Users
@@ -41,7 +42,7 @@
                                 {
                                     $id = $row['id'];
                                     $query = "SELECT * FROM comments WHERE lvl = '0' AND par = '$id'";
-                                    echo get_forum_list_item($row,mysqli_num_rows(mysqli_query($con,$query)));
+                                    echo get_forum_list_item($row,mysqli_num_rows(mysqli_query($con,$query)),$con);
                                 }
                             }
                     ?>

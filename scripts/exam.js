@@ -185,7 +185,6 @@ function examToServer(exam){
     let url="extra/upload_exam.php";
 	req.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-            alert(this.responseText+"wtf");
 			if(this.responseText=="true"){
 				window.location.href = "exam.php";
 			}
@@ -227,6 +226,7 @@ function submit(){
     let questions=document.querySelectorAll(".question_container");
     let exam=new Exam();
     let name=document.querySelector("#exam_name input");
+    console.log(name);
     exam.startTime=inputs[1].value;
     exam.endTime=inputs[2].value;
     exam.name=name.value;
@@ -255,8 +255,7 @@ function submit(){
         exam.questions.push(question);
         
     }
-    
-    alert(exam.questions.length);
+    console.log(exam);
     examToServer(exam);
     
 }

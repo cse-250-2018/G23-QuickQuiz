@@ -106,9 +106,18 @@
     justify-content: space-around;
     max-height: 140px;
 }
+.blog_list_prefix img,#blog_single_vote_bar img{
+    cursor: pointer;
+    opacity: 0.3;
+}
+.blog_list_prefix .active_btn,#blog_single_vote_bar .active_btn{
+    opacity: 1;
+}
 .blog_list_suffix{
     flex-grow: 1;
 }
+
+
 .blog_list_bottom{
     padding-top: 15px;
     border-top: 2px solid #aaa;

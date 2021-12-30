@@ -19,6 +19,6 @@
             $con->query($query);
         }
     }
-    echo count($exam->questions);
+    echo "true";
 
 ?>

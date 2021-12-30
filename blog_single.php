@@ -58,6 +58,13 @@
                 <div id="blog_single_page_container">
                     <div id="blog_single_container">
                         <?php 
+                            $votes=0;
+                            $query = "SELECT * FROM votes WHERE post = ".$_GET['blogid']." AND vote = 1";
+                            $result = mysqli_query($con,$query);
+                            if($result) $votes = $votes + mysqli_num_rows($result);
+                            $query = "SELECT * FROM votes WHERE post = ".$_GET['blogid']." AND vote = -1";
+                            $result = mysqli_query($con,$query);
+                            if($result) $votes = $votes - mysqli_num_rows($result);
                             echo '<div id="blog_single_blog_area">';
                                 $blogid=$_GET['blogid'];
                                 $query = "SELECT * FROM `posts` WHERE id = ".$blogid." limit 1";
@@ -75,9 +82,9 @@
                             echo '</div>';
                             echo'<div id="blog_single_vote_bar">
                             <div id="lft_vote_bar">
-                                <img src="images/upvote_icon.svg">
-                                    <p>+3</p>
-                                <img src="images/downvote_icon.svg">
+                                <img src="images/upvote.svg" onclick="upvoteInit(this,'.$row['id'].')">
+                                <label>'.$votes.'</label>
+                                <img src="images/downvote.svg" onclick=downvoteInit(this,"'.$row['id'].'")>
                             </div>
                             <div id="rht_vote_bar">
                                 <a id="author_vote_bar" href="#">'.$row['author'].'</a>

@@ -523,14 +523,20 @@
     }
 
 	// Prepares list item for forum
-	function get_forum_list_item($row,$cnt){
+	function get_forum_list_item($row,$cnt,$con){
         $blog=$row['content'];
-		
+		$votes=0;
+        $query = "SELECT * FROM votes WHERE post = ".$row['id']." AND vote = 1";
+        $result = mysqli_query($con,$query);
+        if($result) $votes = $votes + mysqli_num_rows($result);
+        $query = "SELECT * FROM votes WHERE post = ".$row['id']." AND vote = -1";
+        $result = mysqli_query($con,$query);
+        if($result) $votes = $votes - mysqli_num_rows($result);
         return '<div class="blog_list_item">
                         <div class="blog_list_prefix">
-                            <img src="images/upvote.svg">
-                            <label>+5</label>
-                            <img src="images/downvote.svg">
+                            <img src="images/upvote.svg" onclick="upvoteInit(this,'.$row['id'].')">
+                            <label>'.$votes.'</label>
+                            <img src="images/downvote.svg" onclick=downvoteInit(this,"'.$row['id'].'")>
                         </div>
                         <div class="blog_list_suffix">
                             <a href="blog_single.php?blogid='.$row['id'].'" class="blog_title">'.$row['title'].'</a>
