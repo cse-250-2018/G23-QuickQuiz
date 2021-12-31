@@ -4,9 +4,9 @@
 
 CREATE TABLE `leaderboard` (
   `user` varchar(50) NOT NULL,
-  `Structured Programming Language` int(18) NOT NULL DEFAULT 0,
-  `Structured Programming Language Total` int(18) NOT NULL DEFAULT 0,
-  `Discrete Math` int(18) NOT NULL DEFAULT 0,
+  `Structured Programming Language` int(11) NOT NULL DEFAULT 0,
+  `Structured Programming Language Total` int(11) NOT NULL DEFAULT 0,
+  `Discrete Math` int(11) NOT NULL DEFAULT 0,
   `Discrete Math Total` int(11) NOT NULL DEFAULT 0,
   `Data Structures` int(11) NOT NULL DEFAULT 0,
   `Data Structures Total` int(11) NOT NULL DEFAULT 0,
@@ -37,5 +37,7 @@ CREATE TABLE `leaderboard` (
   `Machine Learning` int(11) NOT NULL DEFAULT 0,
   `Machine Learning Total` int(11) NOT NULL DEFAULT 0,
   `Others` int(11) NOT NULL DEFAULT 0,
-  `Others Total` int(11) NOT NULL DEFAULT 0
+  `Others Total` int(11) NOT NULL DEFAULT 0,
+  `any` int(11) NOT NULL DEFAULT 0,
+  `any Total` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
