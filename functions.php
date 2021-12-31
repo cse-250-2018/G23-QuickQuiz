@@ -644,15 +644,15 @@
         {
             /*UPDATE `leaderboard` SET `Structured Programming Language`=`Structured Programming Language`+1,`Structured Programming Language Total`=`Structured Programming Language`-1 WHERE user = 'admin';*/
             
-            $sql = "UPDATE `leaderboard` SET `".$course."` = `".$course."` + ".$marks." , `".$course." Total` = `".$course." Total` + ".$total." WHERE user = '".$user."'";
+            $sql = "UPDATE `leaderboard` SET `".$course."` = `".$course."` + ".$marks." , `".$course." Total` = `".$course." Total` + ".$total.", `any` = `any` + ".$marks.", `any Total` = `any Total` + ".$total." WHERE user = '".$user."'";
             $con->query($sql);
             
         }
         else
         {
             
-            $sql = "INSERT INTO `leaderboard`(`user`, `".$course."`, `".$course." Total`) VALUES ('".$user."', '".$marks."','".$total."')";
-            echo $sql;
+            $sql = "INSERT INTO `leaderboard`(`user`, `".$course."`, `".$course." Total`, `any`, `any Total`) VALUES ('".$user."', '".$marks."','".$total."','".$marks."','".$total."')";
+            //echo $sql;
             
             $con->query($sql);
         }
