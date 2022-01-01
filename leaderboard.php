@@ -5,6 +5,11 @@
         header("Location:login.php");
         die;
     }
+ 
+    if(!isset($_SESSION['leaderboard_Rank']))
+    {
+        $_SESSION['leaderboard_Rank']='ASC';
+    }
 ?>
 <html>
     <head>
@@ -49,18 +54,41 @@
                     /*
                     SELECT RANK() OVER (ORDER BY `any` DESC, `any Total` ASC) AS Rank, `user`, `any` AS Marks, `any`*100/`any Total` AS Accuracy FROM `leaderboard`WHERE 1
                     */
-                    $sql = "SELECT RANK() OVER (ORDER BY `".$course."` DESC, `".$course." Total` ASC) AS Rank, `user`, `".$course."` AS Marks, `".$course."`*100/`".$course." Total` AS Accuracy FROM `leaderboard`WHERE 1";
-                        
+                    $sql = "SELECT RANK() OVER (ORDER BY `".$course."` DESC, `".$course." Total` ASC) AS Rank, `user`, `".$course."` AS Marks, `".$course."`*100/`".$course." Total` AS Accuracy FROM `leaderboard`WHERE 1 AND `".$course." Total` > 0";
+                
+                    $sql = " SELECT * FROM ( $sql ) AS tmp WHERE 1 ";
+                    $sort = "ORDER BY Rank ASC";
+                    if(isset($_SESSION['leaderboard_sort']))
+                    {
+                        $sort = $_SESSION['leaderboard_sort'];
+                    }
+                    $sql = $sql.$sort;
+        
                     $result = mysqli_query($con, $sql);
 
 
                  ?>
                     <table>
                             <tr>
-                                <th>Rank</th>
-
+                                <th>Rank
+                                <?php 
+                                        if(($_SESSION['leaderboard_Rank']) == "Both")
+                                            echo "<a href='leaderboardSort.php?sort=Rank&cnt=1'><img src='images/both.gif' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else if($_SESSION['leaderboard_Rank'] == "DESC")
+                                             echo "<a href='leaderboardSort.php?sort=Rank&cnt=1'><img src='images/downvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else
+                                            echo "<a href='leaderboardSort.php?sort=Rank&cnt=0'><img src='images/upvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                ?>
+                                </th>
                                 <th>User Name
-                                
+                                <?php 
+                                        if(!isset($_SESSION['leaderboard_user']))
+                                            echo "<a href='leaderboardSort.php?sort=user&cnt=1'><img src='images/both.gif' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else if($_SESSION['leaderboard_user'] == "DESC")
+                                             echo "<a href='leaderboardSort.php?sort=user&cnt=1'><img src='images/downvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else
+                                            echo "<a href='leaderboardSort.php?sort=user&cnt=0'><img src='images/upvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                ?>
                                 </th>
 
                                 <th>Marks
@@ -68,7 +96,14 @@
                                 </th>
 
                                 <th>Accuracy
-                                
+                                <?php 
+                                        if(!isset($_SESSION['leaderboard_Accuracy']))
+                                            echo "<a href='leaderboardSort.php?sort=Accuracy&cnt=1'><img src='images/both.gif' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else if($_SESSION['leaderboard_Accuracy'] == "DESC")
+                                             echo "<a href='leaderboardSort.php?sort=Accuracy&cnt=1'><img src='images/downvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                        else
+                                            echo "<a href='leaderboardSort.php?sort=Accuracy&cnt=0'><img src='images/upvote_icon.svg' style='position: relative; right 3px; verticale aign: middle;'></a>";
+                                ?>
                                 </th>
                             </tr>
                      <?php 
@@ -83,7 +118,7 @@
                               <td><?php echo $rank ?></td>
                               <td><?php echo $user ?></td>
                               <td><?php echo $marks ?></td>
-                              <td><?php echo $accuracy ?></td>
+                              <td><?php echo $accuracy." %" ?></td>
                     <?php
 
                     }
