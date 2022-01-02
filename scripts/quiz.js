@@ -203,7 +203,7 @@ function answerToServer(exam){
 	req.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
             if(this.responseText!="true"){
-			     //alert(this.responseText);
+			     alert(this.responseText);
 			}
             window.location.href = "summary.php";
 	  	}
@@ -316,7 +316,14 @@ function quizAnswerSubmit(){
     quizAnswerToServer(exam);
 }
 
-//get question from database
-function getQuestionFromDB(){
-    //will work
+//hide option for 'question from database'
+function hidePart1(){
+    let p1 = document.getElementById("part1");
+    let p2 = document.getElementById("part2");
+    p1.style.display = "none";
+    p2.style.display = "block";
+}
+function hideForm(){
+    let form = document.getElementsByClassName("box-2");
+    form.style.display = "none";
 }
