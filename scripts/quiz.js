@@ -181,12 +181,36 @@ function getQuestion(){
 function quizToServer(exam){
 	let req=new XMLHttpRequest();
     let url="extra/upload_quiz.php";
+    let quiz_id="-1";
 	req.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
             //alert(this.responseText+"wtf");
-			if(this.responseText=="true"){
+			/*if(this.responseText=="true"){
 				window.location.href = "quiz.php";
+			}*/
+            quiz_id = this.responseText;
+            window.location.href = "quiz.php";
+	  	}
+	};
+	req.open("POST", url, false);
+	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	req.send("jsonExam="+JSON.stringify(exam));
+    
+    return quiz_id;
+}
+
+//Uploads duplicate questions of quiz to the server
+function quizDuplicateQuestionToServer(exam){
+	let req=new XMLHttpRequest();
+    let url="extra/submit_quiz_duplicate_question.php";
+    
+	req.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+            //alert(this.responseText+"wtf");
+			if(this.responseText!="true"){
+                alert(this.responseText);
 			}
+            window.location.href = "quiz.php";
 	  	}
 	};
 	req.open("POST", url, false);
@@ -241,12 +265,13 @@ function submit(){
             return ;
         }
     }
+    inputs=document.querySelectorAll("#questions_container input"); 
     let questions=document.querySelectorAll(".question_container");
     let exam=new Exam();
     let name=document.querySelector("#quiz_name input");
     exam.name=name.value;
     let selects=document.querySelectorAll("select");
-    let idx=1;
+    let idx=0;
     let selId=0;
     for(let i=0;i<questions.length;i++){
         let statement=questions[i].querySelector(".question input");
@@ -271,10 +296,29 @@ function submit(){
         
     }
     
-    alert(exam.questions.length);
-    quizToServer(exam);
+    let quiz_id=quizToServer(exam);
+    
+    //duplicate qsn
+    let exam2=new Exam();
+    exam2.quizid=quiz_id;
+    
+    let qsn=document.getElementsByClassName('q_cont');
+    for(let i=0; i<qsn.length; i++)
+    {
+        if(qsn[i].checked)
+        {
+            let q=new Question();
+            q.id=qsn[i].value;
+            exam2.questions.push(q);
+            
+        }
+    }
+    alert(exam2.questions.length+" old questions");
+    quizDuplicateQuestionToServer(exam2);
     
 }
+
+
 //Submits the answer of random quiz
 function answerSubmit(){
 
