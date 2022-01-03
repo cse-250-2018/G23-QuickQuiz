@@ -87,11 +87,13 @@
                 
                     $sql = "SELECT * FROM `questions` ";
                     if($course != "any" && $dif != "any")
-                        $sql.="WHERE course='".$course."' AND difficulty='".$dif."'";
+                        $sql.="WHERE course='".$course."' AND difficulty='".$dif."' AND duplicate = 0";
                     else if($course != "any")
-                        $sql.="WHERE course='".$course."'";
+                        $sql.="WHERE course='".$course."' AND duplicate = 0";
                     else if($dif != "any")
-                        $sql.="WHERE difficulty='".$dif."'";
+                        $sql.="WHERE difficulty='".$dif."' AND duplicate = 0";
+                    else
+                        $sql.="WHERE duplicate = 0";
                 
                     $result = mysqli_query($con, $sql);
                     //echo $sql;
@@ -141,7 +143,7 @@
             
             <div id="part2">
                 <div id="question_menu">
-                    <div id="add_question" onclick="getQuestion()">+Add Question</div>
+                    <div id="add_question" data-title="Add question by manual input" onclick="getQuestion()">+Add Question</div>
                     <div id="done" onclick="submit()">Create Quiz</div>
                 </div>
             </div>
