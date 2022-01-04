@@ -1,8 +1,6 @@
 <?php
-	$msg = "";
 	include 'functions.php';
 	include 'connection.php';
-	
 	//store previous inputs in f_****
 	$_SESSION['f_name']="";
 	$_SESSION['f_user_name']="";
@@ -15,15 +13,19 @@
 	//check for reg
 	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']))
 	{
-		$msg = userRegistration($_POST, $con);
-		if($msg == "* Your account is created successfully")
-		{
-			$msg="<div class='msg-2'>Your account is created successfully.</div>";
-            $_SESSION['current_user']=$_POST['username'];
-			header("location: index.php");
-		}
-		
+        ini_set("SMTP","ssl://smtp.gmail.com");
+        ini_set("smtp_port","465");
+        $to = $_POST['email'];
+        $subject = "Email verification";
+        $code=rand(1000000,9999999);
+        $messege = "you verification code is ".$code;
+        mail($to,$subject,$messege);
+        $_POST['code'] = $code;
+        $_SESSION['postData'] = $_POST;
+        header("location:verify.php");
+        die;
 	}
+
 	
 ?>
 
@@ -46,7 +48,7 @@
                                             </div>
                     <div id="lft2"><img src="images/form_right.svg"></div>
                 </div>
-                <form id="form_rht" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" onsubmit="return initValidation()">
+                <form id="form_rht" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" onsubmit="return validate()">
                     <div id="form_title">Join Us</div>
                     <label class="inp_lbl">Username</label>
                     <input class="inp" type="text" name="username" value="<?php echo $_SESSION['f_user_name']; ?>" required>

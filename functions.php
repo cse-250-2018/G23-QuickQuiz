@@ -37,9 +37,9 @@
 		{
 			return "<div class='msg'>* Usernameame is required</div>";
 		}
-        if(strlen($username) < 5)
+        if(strlen($username) < 3)
 		{
-            return "<div class='msg'>* Username can not be lass than 5 characters</div>";
+            return "<div class='msg'>* Username can not be lass than 3 characters</div>";
         }
 		if( checkUserName($username, $con) == true)
 		{

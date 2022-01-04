@@ -37,7 +37,7 @@
 
 <html>
 <head>
-	<title> LogIn form </title>
+	<title> LogIn </title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/form.css">
 </head>

@@ -1,46 +1,36 @@
-var regReady=false;
-function initValidation(){
-    setTimeout(validate,100);
-    return regReady;
-}
+
 function validate(){
     let frm=document.getElementById("form_rht");
     let inputs=frm.querySelectorAll("input");
     regReady=true;
     if(inputs[0].value.length==0){
         inputs[0].reportValidity();
-        regReady=false;
-        return;
+        return false;
     }
     
     if(inputs[1].value.length==0){
         inputs[1].reportValidity();
-        regReady=false;
-        return;
+        return false;
     }
     
     if(inputs[2].value.length==0){
         inputs[2].reportValidity();
-        regReady=false;
-        return;
+        return false;
     }
     
     if(inputs[3].value.length==0){
         inputs[3].reportValidity();
-        regReady=false;
-        return;
+        return false;
     }
     
     if(inputs[4].value.length==0){
         inputs[4].reportValidity();
-        regReady=false;
-        return;
+        return false;
     }
     
     if(inputs[5].value.length==0){
         inputs[5].reportValidity();
-        regReady=false;
-        return;
+        return false;
     }
 
     if(inputs[3].value!==inputs[4].value){
@@ -54,8 +44,7 @@ function validate(){
             inputs[4].setCustomValidity("");
         });
 
-        regReady=false;
-        return;
+        return false;
     }
     
     if(usernameAvaliable(inputs[0].value)==false){
@@ -64,8 +53,7 @@ function validate(){
         inputs[0].addEventListener('input', function(){
             inputs[0].setCustomValidity("");
         });
-        regReady=false;
-        return;
+        return false;
     }
     if(!emailAvaliable(inputs[2].value)){
         inputs[2].setCustomValidity("Email already exists");
@@ -73,10 +61,9 @@ function validate(){
         inputs[2].addEventListener('input', function(){
             inputs[2].setCustomValidity("");
         });
-        regReady=false;
-        return;
+        return false;
     }
-    regReady = true;
+    return true;
 }
 
 function usernameAvaliable(s){
