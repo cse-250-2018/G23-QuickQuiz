@@ -424,7 +424,7 @@
                 a1.setAttribute('href','$file');
                 btn1 = document.createElement('button');
                 btn1.innerHTML = 'View';
-                btn1.classList.add('button2');
+                btn1.classList.add('view');
                 a1.appendChild(btn1);
                 td4.appendChild(a1);
                 
@@ -434,7 +434,7 @@
                 a2.setAttribute('download','$name');
                 btn2 = document.createElement('button');
                 btn2.innerHTML = 'Download';
-                btn2.classList.add('button2');
+                btn2.classList.add('download');
                 a2.appendChild(btn2);
                 td5.appendChild(a2);
                 
@@ -443,7 +443,7 @@
                 a3.setAttribute('href','$delLink');
                 btn3 = document.createElement('button');
                 btn3.innerHTML = 'Delete';
-                btn3.classList.add('button2');
+                btn3.classList.add('delete');
                 a3.appendChild(btn3);
                 td6.appendChild(a3);
                 
