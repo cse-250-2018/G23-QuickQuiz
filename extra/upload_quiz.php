@@ -1,5 +1,9 @@
 <?php 
 	include '../connection.php';
+    if(isset($_SESSION['hideFormDB']))
+    {
+        unset($_SESSION['hideFormDB']);
+    }
     if(!isset($_POST['jsonExam'])||!isset($_SESSION['current_user'])){
         echo "Probably not logged in";
         die;
@@ -20,6 +24,6 @@
             $con->query($query);
         }
     }
-    echo count($exam->questions);
+    echo $quiz_id;
 
 ?>

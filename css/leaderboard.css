@@ -1,0 +1,115 @@
+:root {
+    --myblue: #39a0ed;
+    --mycyan: #1EC7CF;
+    --mydark: #4C6085;
+    --mygray: #dddddd;
+    --mygreen: #31C062;
+    --litecyan: #ebfeff;
+    --liteblue: #eef7ff;
+    --litedark: #4C6085;
+}
+
+table{
+    width: 50%;
+    border-collapse: collapse;
+    margin: 100px auto;
+    box-shadow: 0 0 20px #010914;
+    font-family: cursive;
+    border: 1px solid #ccc;
+}
+
+td{
+    color: black;
+    height: 50px;
+    vertical-align: center;
+    border: 1px solid black;
+    font-family: cursive, Comic-Sans-MS , sans-serif;
+    /*width: 20%;*/
+    text-align: center;
+    
+}
+tr{
+    outline: 1px solid black;
+}
+tr:nth-of-type(odd) {
+    border:1px solid var(--myblue);
+    background-color: var(--litecyan);
+
+}
+tr:nth-of-type(even) {
+    border:1px solid var(--mycyan);
+    background-color: var(--liteblue);
+}
+th{
+    color: #fff;
+    height: 50px;
+    vertical-align: center;
+    outline : 1px solid #fff;
+    background-color: var(--mydark);
+    font-family: serif;
+}
+select::-ms-expand {
+    display: none;
+}
+select {
+    padding: 8px;
+    margin: 5px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0.5em 2em 0.5em 0.5em;
+    border: 1px solid #d41ce0;
+    font: inherit;
+    font-family:cursive;
+    line-height: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position: right 15px top 1em, right 10px top 1em;
+    background-size: 5px 5px, 5px 5px;
+}
+
+option{
+    position:absolute;
+    top:100%;
+    right:0;
+    left:0;
+    margin:inherit 0;
+    padding:0 0;
+    background-color:#2229ae24;
+    font-family: cursive;
+}
+.flex-form{
+    margin: 3% auto;
+    display: flex;
+    position: relative;
+    width: fit-content;
+    box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.flex-form > * {
+    border: 0;
+    padding: 0 0 0 10px;
+    background: #fff;
+    line-height: 50px;
+    font-size: 1rem;
+    border-radius: 0;
+    outline: 0;
+    -webkit-appearance: auto;
+}
+
+.flex-form input[type="submit"] {
+    background: #ef3f5a;
+    border: 1px solid #ef3f5a;
+    color: #fff;
+    padding: 0 30px;
+    cursor: pointer;
+}
+
+.flex-form input[type="submit"]:hover {
+    background: #d73851;
+    border: 1px solid #d73851;
+    transform: translateX(2px);
+}

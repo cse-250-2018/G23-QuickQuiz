@@ -8,6 +8,7 @@
         <a href="exam.php" class="menu_item">Exam</a>
         <a href="notes.php" class="menu_item">Notes</a>
         <a href="forum.php" class="menu_item">Forum</a>
+        <a href="leaderboard.php" class="menu_item">Leaderboard</a>
     </div>
     <div id="nav_right">
         <div id="nav_btn" class="menu_item" onclick="togleNav()">&#9776;</div>
