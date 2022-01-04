@@ -335,3 +335,100 @@ td{
     top: 0;
     width: 100%;
 }
+
+
+.delete {
+    background-color:#dd3c3f;
+    border-radius: 10px;
+    color: #FFFFFF;
+    padding: 0.64286em 0.85714em 0.53571em;
+    position: relative;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    font-family: cursive;
+    
+}
+.delete:visited {
+    color: #FFFFFF;
+}
+.delete:hover, 
+.delete:focus {
+    background: none repeat scroll 0 0 red;
+    box-shadow: 0 6px 0 var(--mygray), 0 6px 3px rgba(0, 0, 0, 0.4);
+    color: #FFFFFF!important;
+}
+.delete:active {
+    box-shadow: 0 0 0 var(--mygray), 0 0 0 rgba(0, 0, 0, 0.4);
+    top: 6px;
+}
+.delete:active:after {
+    top: -6px;
+}
+.delete:before {
+    background: url("../images/delete.jpg") no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
+    content: "";
+    display: inline-block;
+    height: 20px;
+    margin-right: 13px;
+    position: relative;
+    vertical-align: middle;
+    width: 30px;
+}
+.delete:after {
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.edit {
+    background-color:darkolivegreen;
+    border-radius: 10px;
+    color: #FFFFFF;
+    padding: 0.64286em 0.85714em 0.53571em;
+    position: relative;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    font-family: cursive;
+    
+}
+.edit:visited {
+    color: #FFFFFF;
+}
+.edit:hover, 
+.edit:focus {
+    background: none repeat scroll 0 0 darkolivegreen;
+    box-shadow: 0 6px 0 var(--mygray), 0 6px 3px rgba(0, 0, 0, 0.4);
+    color: #FFFFFF!important;
+}
+.edit:active {
+    box-shadow: 0 0 0 var(--mygray), 0 0 0 rgba(0, 0, 0, 0.4);
+    top: 6px;
+}
+.edit:active:after {
+    top: -6px;
+}
+.edit:before {
+    background: url("../images/edit.png") no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
+    content: "";
+    display: inline-block;
+    height: 20px;
+    margin-right: 13px;
+    position: relative;
+    vertical-align: middle;
+    width: 30px;
+}
+.edit:after {
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
