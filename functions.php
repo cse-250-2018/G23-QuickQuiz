@@ -473,10 +473,7 @@
                 
         ";
         
-        $action = 'td[$idx].addEventListener("click", function(){
-                    alert("working $id!");
-                    td[$idx].innerHTML="'.$rename.'";
-                    alert("Kaj sesh,....$id!");
+        $action = 'td['.$idx.'].addEventListener("click", function(){
                 
                 });';
                 
