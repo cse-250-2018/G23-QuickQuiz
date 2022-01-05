@@ -166,7 +166,7 @@ input[type="file"] {
     margin: 5px;
 	width:100%;
 }
-.choose::-webkit-file-upload-button {
+#choose::-webkit-file-upload-button {
   color: white;
   display: inline-block;
   background: #1CB6E0;
@@ -178,6 +178,7 @@ input[type="file"] {
   cursor: pointer;
   font-size: 10pt;
   font-family: cursive;
+  border-radius: 25px;
 }
 
 label{
@@ -335,7 +336,6 @@ td{
     top: 0;
     width: 100%;
 }
-
 
 .delete {
     background-color:#dd3c3f;
