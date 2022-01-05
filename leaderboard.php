@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/leaderboard.css">
     </head>
-    <body>
+    <body style="background-image: url(images/form_page_bg.svg);">
         <?php include 'parts/nav_bar.php' ?>
             
             <form  class="flex-form" method="POST" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
