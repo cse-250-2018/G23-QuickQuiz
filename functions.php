@@ -397,6 +397,7 @@
         $file=$folder."/".$name;
         
         $delLink="noteDelete.php?id=$id&which=$name";
+        $editLink="noteEdit.php?id=$id";
         $rename = " <form action='noteRename.php' method='get'>
                     <input type='text' value='$name' id='renameID' name='rename' >
                     <input type='hidden' value='$id' name='id' >
@@ -406,7 +407,7 @@
                 
         echo "
               <script>
-                var tr, td1,td2,td3,td4,td5,td6,td7,a1,a2,a3,btn1,btn2,btn3;
+                var tr, td1,td2,td3,td4,td5,td6,td7,td8,a1,a2,a3,a4,btn1,btn2,btn3,btn4;
                 var td = new Array();
                 
                 tr = document.createElement('tr');
@@ -447,6 +448,15 @@
                 a3.appendChild(btn3);
                 td6.appendChild(a3);
                 
+                td8 = document.createElement('td');
+                a4 = document.createElement('a');
+                a4.setAttribute('href','$editLink');
+                btn4 = document.createElement('button');
+                btn4.innerHTML = 'Edit';
+                btn4.classList.add('edit');
+                a4.appendChild(btn4);
+                td8.appendChild(a4);
+                
                 tr.appendChild(td[$idx]);
                 tr.appendChild(td2);
                 tr.appendChild(td3);
@@ -454,6 +464,7 @@
                 tr.appendChild(td4);
                 tr.appendChild(td5);
                 tr.appendChild(td6);
+                tr.appendChild(td8);
                 
                 document.getElementById('main').appendChild(tr);
                 
@@ -462,12 +473,12 @@
                 
         ";
         
-        $action = "td[$idx].addEventListener('click', function(){
-                    alert('working $id!');
-                    td[$idx].innerHTML="."$rename"."
-                    alert('Kaj sesh,....$id!');
+        $action = 'td[$idx].addEventListener("click", function(){
+                    alert("working $id!");
+                    td[$idx].innerHTML="'.$rename.'";
+                    alert("Kaj sesh,....$id!");
                 
-                });";
+                });';
                 
         
         echo "<script>";
