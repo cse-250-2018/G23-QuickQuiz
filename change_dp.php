@@ -40,6 +40,7 @@
 	<title> Update Profile </title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/form.css">
+	<link rel="stylesheet" type="text/css" href="css/notes.css">
     <script src="scripts/vanila.js"></script>
     <script src="scripts/form.js"></script>
 </head>
@@ -57,7 +58,7 @@
                 <form enctype="multipart/form-data" id="form_rht" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" onsubmit="return validate()">
                     <?php echo $msg; ?>
                     <div id="form_title">Change Profile Picture</div>
-                    <input class="inp" type="file" name="file" accept=".jpg" required>
+                    <input id="choose" class="inp" type="file" name="file" accept=".jpg" required>
                     <div class="inp_btn_container"><button class="inp_btn" type="submit" name="submit">Upload</button></div>
                 </form>
             </div>

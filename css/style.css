@@ -27,6 +27,8 @@ a{
     overflow-x: scroll;
 }
 #home{
+    background-attachment: fixed;
+    background-image: url(../images/form_page_bg.svg);
 }
 
 
@@ -35,6 +37,7 @@ a{
 
 /*Home Card*/
 #front_page{
+
     color: #fff;
     display: flex;
     flex-direction: row;
@@ -179,13 +182,13 @@ a{
     background-color: var(--mycyan);
 }
 #card_1{
-    background-color: #ffffff0f;
+    background-color: #39a0ed4f;
 }
 #card_2{
-    background-color: #ffffff0f;
+    background-color: #4c60855e;
 }
 #card_3{
-    background-color: #ffffff0f;
+    background-color: #1ec7cf52;
 }
 
 
