@@ -12,7 +12,7 @@
         <script src="scripts/quiz.js"></script>
         <div ></div>
     </head>
-    <body>
+    <body style="background-image: url(images/form_page_bg.svg);">
         <?php include 'parts/nav_bar.php' ?>
         
         
