@@ -613,7 +613,7 @@
                             echo '<div class="comment_author">';
                                 echo '<div>';
                                     echo '<img src="profile/'.$row['user'].'.jpg">';
-                                    echo '<a href="#">'.$row['user'].'</a>
+                                    echo '<a href="profile.php?username='.$row['user'].'">'.$row['user'].'</a>
                                 </div>';
                             echo '</div>';
                         echo '</div>';

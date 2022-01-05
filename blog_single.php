@@ -73,7 +73,7 @@
                                     $row = mysqli_fetch_assoc($result);
                                     $blog = $row['content'];
                                     echo '<a href="#">'.$row['title'].'</a>';
-                                    echo '<p id="blog_time">Posted by <a href="#">'.$row['author'].'</a> '.timeSince($row['time']).' ago</p>';
+                                    echo '<p id="blog_time">Posted by <a href="profile.php?username='.$row['author'].'">'.$row['author'].'</a> '.timeSince($row['time']).' ago</p>';
 
                                 }
                                 echo '<div id="blog_body">';
@@ -87,7 +87,7 @@
                                 <img src="images/downvote.svg" onclick=downvoteInit(this,"'.$row['id'].'")>
                             </div>
                             <div id="rht_vote_bar">
-                                <a id="author_vote_bar" href="#">'.$row['author'].'</a>
+                                <a id="author_vote_bar" href="profile.php?username='.$row['author'].'">'.$row['author'].'</a>
                                 <img src="images/comments.svg">
                                 38
                             </div>
@@ -119,7 +119,7 @@
                                                     echo '<div class="comment_author">';
                                                         echo '<div>';
                                                             echo '<img src="profile/'.$row['user'].'.jpg">';
-                                                            echo '<a href="#">'.$row['user'].'</a>';
+                                                            echo '<a href="profile.php?username='.$row['user'].'">'.$row['user'].'</a>';
                                                         echo '</div>';
                                                     echo '</div>';
                                                 echo '</div>';

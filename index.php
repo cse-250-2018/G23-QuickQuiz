@@ -16,8 +16,8 @@
                     <p>Wellcome to</p>
                     <h2>Quick Quiz</h2>
                     <div id="btn_container">
-                        <div id="btn1">Contact Us</div>
-                        <div id="btn2">About Us</div>
+                        <a id="btn1" href="contact.php">Contact Us</a>
+                        <a id="btn2" href="about.php">About Us</a>
                     </div>
                 </div>
                 <div id="front_right">

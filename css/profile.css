@@ -1,0 +1,89 @@
+:root {
+    --myblue: #39a0ed;
+    --mycyan: #1EC7CF;
+    --mydark: #4C6085;
+    --mygray: #dddddd;
+    --mygreen: #31C062;
+    --litecyan: #d5fdff;
+    --liteblue: #dcefff;
+    --litedark: #a5afc2;
+}
+body{
+    background-attachment: fixed;
+    background-image: url(../images/form_page_bg.svg);
+}
+#profile_container{
+    height: min-content;
+    min-height: calc(100% - 50px);
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+}
+.lft{
+    border:2px solid var(--mygray);
+    width: 50%;
+    border-radius: 20px;
+    padding: 50px;
+}
+.rht{
+    border:2px solid var(--mygray);
+    width: 50%;
+    border-radius: 20px;
+    padding: 50px;
+}
+
+.image_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.image_container img{
+    margin: 5px;
+    width: 150px;
+    height: 150px;
+    max-width: 80%;
+    border-radius: 200px;
+    object-fit: cover;
+}
+.info_total{
+
+}
+.info{
+    font-size: 20px;
+    margin-top: 20px;
+}
+.btn{
+    width: 200px;
+    background-color: var(--myblue);
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+.dp{
+    background-color: var(--mycyan);
+}
+.btn a{
+    color: #fff;
+}
+.notes_total{
+    margin: 50px;
+}
+.forum_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.forum_container a{
+    border-bottom: 1px solid var(--mygray);
+    display: block;
+    color: var(--myblue);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

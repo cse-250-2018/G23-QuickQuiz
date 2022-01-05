@@ -66,7 +66,7 @@
                     <input class="inp" type="password" name="cpassword" required>
                     
                     <label class="inp_lbl">Registration Number</label>
-                    <input class="inp" type="text" required>
+                    <input class="inp" type="text" name="reg_no" value = "<?php echo $_SESSION['f_reg'] ?>" required>
                     <div class="inp_btn_container"><button class="inp_btn" type="submit" name="submit">Create Account</button></div>
                     <div class="form_extra">
                         Already have an account? <a href="login.php">Sign In</a>
