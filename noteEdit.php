@@ -37,43 +37,6 @@
         header("Location:profile.php");
         die;
     }
-
-	//check for update
-	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']))
-	{
-		if(isset($_SESSION['msg']))
-			unset($_SESSION['msg']);
-        
-		$new_course = $_POST['course'];
-        $new_type = $_POST['type'];
-        $new_name = $_POST['fileName'];
-        
-        $sql = "UPDATE `notes` SET `Name`='".$new_name."',`Course`='".$new_course."',`Type`='".$new_type."' WHERE `ID` = '".$id."'";
-        
-        $result = mysqli_query($con, $sql);
-        if($result)
-        {
-            if($new_name == $name)
-            {
-                header("location: profile.php");
-			    die;
-            }
-            else
-            {
-                $new_file=$folder."/".$new_name;
-                if(rename($file, $new_file))
-                {
-                    header("location: profile.php");
-			         die;
-                }
-                else
-                {
-                    $msg="Something error in renaming";
-                }
-            }
-        }
-		
-	}
 	
 ?>
 
@@ -95,11 +58,12 @@
 					<div id="lft2"><img src="images/form_right.svg"></div>
 				</div>
                 
-				<form id="form_rht" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+				<form id="form_rht" action="noteRename.php" method="POST">
 				<?php echo $msg; ?>
 					<div id="form_title">Edit Note Information</div>
 					<label class="inp_lbl">File Name</label>
 					<input class="inp" type="text" name="fileName" value="<?php echo $name; ?>" >
+                    <input type="hidden" name="id" value="<?php echo $id; ?>" >
 					<label class="inp_lbl">Course</label>
                     <select class="inp" name="course">
                         <option value="Structured Programming Language" <?php if($course == "Structured Programming Language") echo "selected"; ?> >Structured Programming Language</option>
