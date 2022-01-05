@@ -41,24 +41,15 @@
                 <div id="left_bar">
                     <a href="create_post.php" id="new_blog">+Create New Blog</a>
                     <div id="forum_menu">
-                        <a href="#" class="forum_nav_btn selected_forum_nav_btn">Forum Home</a>
-                        <a href="#" class="forum_nav_btn">My blogs</a>
-                        <a href="#" class="forum_nav_btn">My groups</a>
-                        <a href="#" class="forum_nav_btn">Groups</a>
-                    </div>
-                    <div id="top_users">
-                        Top Users
-                        <a href="#" class="top_user_item">You Kn0who</a>
-                        <a href="#" class="top_user_item">Steinum</a>
-                        <a href="#" class="top_user_item">Kawchar85</a>
-                        <a href="#" class="top_user_item">Raiden</a>
-                        <a href="#" class="top_user_item">DEVIL_MAY_CRY</a>
+                        <a href="forum.php" class="forum_nav_btn">Forum Home</a>
+                        <a href="userblogs.php" class="forum_nav_btn selected_forum_nav_btn">My blogs</a>
                     </div>
                 </div>
                 <div id="blog_single_page_container">
                     <div id="blog_single_container">
                         <?php 
                             $votes=0;
+                            $cmnt=0;
                             $query = "SELECT * FROM votes WHERE post = ".$_GET['blogid']." AND vote = 1";
                             $result = mysqli_query($con,$query);
                             if($result) $votes = $votes + mysqli_num_rows($result);
@@ -67,6 +58,9 @@
                             if($result) $votes = $votes - mysqli_num_rows($result);
                             echo '<div id="blog_single_blog_area">';
                                 $blogid=$_GET['blogid'];
+                                $query = "SELECT * FROM comments WHERE lvl = '0' AND par = '$blogid'";
+                                $result = mysqli_query($con,$query);
+                                if($result) $cmnt = mysqli_num_rows($result);
                                 $query = "SELECT * FROM `posts` WHERE id = ".$blogid." limit 1";
                                 $result = mysqli_query($con,$query);
                                 if($result && mysqli_num_rows ( $result )>0){
@@ -89,7 +83,7 @@
                             <div id="rht_vote_bar">
                                 <a id="author_vote_bar" href="profile.php?username='.$row['author'].'">'.$row['author'].'</a>
                                 <img src="images/comments.svg">
-                                38
+                                '.$cmnt.'
                             </div>
                         </div>';
                         ?>

@@ -1,6 +1,10 @@
 <?php
     include 'connection.php';
     include 'functions.php';
+    if(!isset($_SESSION['current_user'])){
+        header("location: forum.php");
+        die;
+    }
 ?>
 <html>
     <head>
@@ -19,13 +23,13 @@
                 <div id="left_bar">
                     <a href="create_post.php" id="new_blog">+Create New Blog</a>
                     <div id="forum_menu">
-                        <a href="forum.php" class="forum_nav_btn selected_forum_nav_btn">Forum Home</a>
-                        <a href="userblogs.php" class="forum_nav_btn">My blogs</a>
+                        <a href="forum.php" class="forum_nav_btn">Forum Home</a>
+                        <a href="userblogs.php" class="forum_nav_btn selected_forum_nav_btn">My blogs</a>
                     </div>
                 </div>
                 <div id="blog_list_container">
                     <?php
-                            $query = "SELECT * FROM posts ORDER BY id DESC ";
+                            $query = "SELECT * FROM posts WHERE author = '".$_SESSION['current_user']."' ORDER BY id DESC ";
                             $result = mysqli_query($con,$query);
                             if ($result){
                                 while($row = mysqli_fetch_array($result))
